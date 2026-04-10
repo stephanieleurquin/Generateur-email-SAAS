@@ -32,7 +32,7 @@ def home():
 
 
 # -------------------------
-# GENERATION DU MAIL (SANS IA)
+# GENERATION DU MAIL
 # -------------------------
 @app.route("/generate", methods=["POST"])
 def generate():
@@ -42,7 +42,6 @@ def generate():
     nie = request.form.get("nie", "")
     address = request.form.get("address", "")
 
-    # 🔥 TEMPLATE INTELLIGENT (sans OpenAI)
     if service == "catastro":
         mail = f"""Estimados señores del Catastro,
 
@@ -57,39 +56,23 @@ Número de NIE:
 Solicitud:
 {message}
 
-Datos del solicitante:
 Nombre: {name}
-
-Atentamente,
-{name}
 """
 
     elif service == "avocat":
         mail = f"""Estimado abogado,
 
-Solicito asesoramiento jurídico sobre la siguiente situación:
-
 {message}
 
-Datos:
 Nombre: {name}
-
-Atentamente,
-{name}
 """
 
     elif service == "banque":
         mail = f"""Estimados señores del banco,
 
-Me dirijo a ustedes para solicitar información sobre mi cuenta.
-
-Solicitud:
 {message}
 
 Nombre: {name}
-
-Atentamente,
-{name}
 """
 
     else:
@@ -98,16 +81,13 @@ Atentamente,
 {message}
 
 Nombre: {name}
-
-Atentamente,
-{name}
 """
 
     return render_template("result.html", mail=mail)
 
 
 # -------------------------
-# ENVOI EMAIL (OPTIONNEL)
+# ENVOI EMAIL
 # -------------------------
 @app.route("/send", methods=["POST"])
 def send():
@@ -116,8 +96,5 @@ def send():
     return "<h2>✅ Email envoyé</h2><a href='/'>Retour</a>"
 
 
-# -------------------------
-# RUN LOCAL
-# -------------------------
 if __name__ == "__main__":
     app.run(debug=True)
