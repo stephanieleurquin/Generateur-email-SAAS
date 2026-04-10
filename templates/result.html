@@ -1,0 +1,9 @@
+<button onclick="copyMail()">📋 Copier</button>
+
+<script>
+function copyMail() {
+    const text = document.querySelector("textarea").value;
+    navigator.clipboard.writeText(text);
+    alert("Mail copié ✔");
+}
+</script>
