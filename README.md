@@ -32,3 +32,20 @@ Ce projet est un micro SaaS Flask qui génère des mails administratifs automati
 bash
 pip install -r requirements.txt
 python app.py
+
+Puis ouvrir :
+http://127.0.0.1:5000
+
+Déploiement
+
+Ce projet peut être déployé sur :
+
+Railway
+Render
+PythonAnywhere
+
+Start command :
+
+gunicorn app:app
+
+Vanschoor St.
